@@ -15,11 +15,19 @@ public class Joueur{
         this.couleur = col;
     }
 
-    public void choisirPion(){} //permet au joueur de choisir le pion,
+    public void verifierPion(Pion pion){} //Verifie que int dé = somme(pion)
+
+    /*public void choisirPion(Pion pion ){
+        if(plateau[pion.position+1] == 0){ //TODO
+            pion.position++;
+        }
+
+    } //permet au joueur de choisir le pion,
 
     public int score(){
+
         return score;
-    } //donne le score litteralement
+    } //donne le score litteralement*/
 
     public void creerPion(){
         this.pionTab = new Pion[6];
