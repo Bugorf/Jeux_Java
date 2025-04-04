@@ -27,15 +27,16 @@ public class Jeux {
             String nom = scanner.nextLine();
             ensembleJoueur.add(new ModeleJoueur(nom, Color.RED));
         }
-
+        scanner.close();
         joueurActuel = ensembleJoueur.getFirst();
     }
 
     public void startJeux() {
         System.out.println("Initialisation du plateau terminé !");
+        Scanner input = new Scanner(System.in);
         while (!fini) {
             ModelePlateau plateau = new ModelePlateau();
-            Scanner input = new Scanner(System.in);
+            
             de = de();
             System.out.println("En attendant que le joueur " + joueurActuel.getNom() + " lance les dés (Taper la touche enter pour continuer)");
             
@@ -90,7 +91,9 @@ public class Jeux {
             } else {
                 joueurActuel = ensembleJoueur.get(numeroJoueur + 1);
             }
+
         }
+        input.close();
     }
 
     public int de() {
