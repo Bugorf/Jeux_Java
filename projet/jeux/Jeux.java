@@ -17,17 +17,17 @@ public class Jeux {
     public ModeleJoueur joueurActuel;
     public ArrayList<ModeleJoueur> ensembleJoueur;
     public int de;
+    public Scanner input = new Scanner(System.in);
 
     // TODO: Comparer cette méthode avec HashMap
     public Jeux(int nbJoueur) {
         ensembleJoueur = new ArrayList<ModeleJoueur>(nbJoueur);
-        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < nbJoueur; i++) {
             System.out.println("Veuillez entrer un nom du joueur: ");
-            String nom = scanner.nextLine();
+            String nom = input.nextLine();
             ensembleJoueur.add(new ModeleJoueur(nom, Color.RED));
         }
-        scanner.close();
+        
         joueurActuel = ensembleJoueur.getFirst();
     }
 
@@ -93,7 +93,6 @@ public class Jeux {
             }
 
         }
-        input.close();
     }
 
     public int de() {
