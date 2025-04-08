@@ -37,7 +37,7 @@ public class Joueur{
     }
 
     public int lancerDé(){
-        return dé.lancer() + dé.lancer();
+        return dé.lancer();
     }
 
 
