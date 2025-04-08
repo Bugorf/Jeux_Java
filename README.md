@@ -6,6 +6,7 @@ Le but de ce projet est de créer un jeux Numeri qui est capable de accueillir p
 ## Fonctionnalités réalisées
 - Mise à jour d'interface en temps réel
 - Animation de transition
+- Choix de niveau de difficulté
 - Prise en charge de jouer sous le réseau local
 - Consult de l'historique du jeux
 - Classement global des scores des joueurs

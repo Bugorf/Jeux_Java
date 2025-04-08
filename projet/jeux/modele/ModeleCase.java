@@ -6,19 +6,26 @@ public class ModeleCase {
     private Color couleur;
     private final int coeff;
     private final int estCaseSpe;
-
+    private static int nbCaseSpe = 0;
     public ModeleCase() {
         coeff = new Random().nextInt(10);
         estCaseSpe = new Random().nextInt(0,2);
+        couleur = estCaseSpe() ? Color.RED : Color.BLACK;
 
     }
 
-    public void setCouleur(Color couleur) {
-        this.couleur = couleur;
+    public Color getCouleur() {
+        return couleur;
     }
 
     public boolean estCaseSpe() {
-        return estCaseSpe == 1;
+        // 6 cases spéciale maxmum
+        if (estCaseSpe == 1 && nbCaseSpe < 6) {
+            nbCaseSpe++;
+            return true;
+        }
+        return false;
+        
     }
 
     public int getCoeff() {

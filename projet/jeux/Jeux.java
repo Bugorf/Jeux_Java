@@ -99,6 +99,7 @@ public class Jeux {
         return new Random().nextInt(1,6);
     }
 
+    /* 
     public static void main(String[] args) {
 
         System.out.println("Veuillez entrer le nombre des joueurs");
@@ -112,4 +113,5 @@ public class Jeux {
 
 
     }
+        */
 }
