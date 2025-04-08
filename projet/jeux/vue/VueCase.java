@@ -56,6 +56,7 @@ public class VueCase extends JPanel {
 
     public void arrive() {
         innerMargin = 20;
+        this.revalidate();
         this.repaint();
     }
 }

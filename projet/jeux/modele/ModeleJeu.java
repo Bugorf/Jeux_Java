@@ -1,4 +1,4 @@
-package projet.jeux;
+package projet.jeux.modele;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -6,13 +6,7 @@ import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
-import projet.jeux.modele.ModeleJoueur;
-import projet.jeux.modele.ModelePion;
-import projet.jeux.modele.ModelePlateau;
-import projet.jeux.modele.ModeleCase;
-import projet.jeux.modele.ModeleEvent;
-
-public class Jeux {
+public class ModeleJeu {
     public boolean fini = false;
     public ModeleJoueur joueurActuel;
     public ArrayList<ModeleJoueur> ensembleJoueur;
@@ -20,7 +14,7 @@ public class Jeux {
     public Scanner input = new Scanner(System.in);
 
     // TODO: Comparer cette méthode avec HashMap
-    public Jeux(int nbJoueur) {
+    public ModeleJeu(int nbJoueur) {
         ensembleJoueur = new ArrayList<ModeleJoueur>(nbJoueur);
         for (int i = 0; i < nbJoueur; i++) {
             System.out.println("Veuillez entrer un nom du joueur: ");
