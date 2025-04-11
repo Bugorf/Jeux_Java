@@ -18,7 +18,6 @@ public class VueCase extends JPanel {
         this.text = String.valueOf(modeleCase.getCoeff());
 
         setOpaque(false);
-        setPreferredSize(new Dimension(100, 100)); 
     }
 
     @Override

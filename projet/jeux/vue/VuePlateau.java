@@ -2,43 +2,66 @@ package projet.jeux.vue;
 
 
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import projet.jeux.modele.ModelePlateau;
 
-public class VuePlateau {
-
+public class VuePlateau extends JPanel{
     public VuePlateau(ModelePlateau modelePlateau) {
-        // Initialisation des conteneurs des cases
-        JFrame framePlateau = new JFrame();
-        JPanel panelPlateau = new JPanel();
-
-        BorderLayout layoutPanel = new BorderLayout();
-        GridBagLayout layoutPlateau = new GridBagLayout(); 
+        setLayout(new GridBagLayout()); // 设置面板的布局
         GridBagConstraints gbc = new GridBagConstraints();
-        
-        panelPlateau.setLayout(layoutPanel);
-        framePlateau.setLayout(layoutPlateau);
 
-        // Les cases
         for (int i = 0; i < modelePlateau.ensembleCase.size(); i++) {
-            panelPlateau = new VueCase(modelePlateau.ensembleCase.get(i));
+            VueCase vueCase = new VueCase(modelePlateau.ensembleCase.get(i));
             int x = modelePlateau.posCase.get(i)[0];
             int y = modelePlateau.posCase.get(i)[1];
 
             gbc.gridx = x;
             gbc.gridy = y;
-            gbc.insets = new Insets(10, 10, 10, 10);
-
-            framePlateau.add(panelPlateau, gbc);
+            gbc.insets = new Insets(20, 60, 20, 60);
+            vueCase.setPreferredSize(new Dimension(80, 80));
+            this.add(vueCase, gbc); // 添加到当前面板
         }
 
+        JFrame framePlateau = new JFrame("Jeu");
+        framePlateau.setLayout(new BorderLayout());
+        framePlateau.getContentPane().add(this, BorderLayout.CENTER);
 
-        framePlateau.setSize(900,500);
         framePlateau.pack();
+        framePlateau.setLocationRelativeTo(null);
         framePlateau.setVisible(true);
     }
-    
+
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Graphics2D g2d = (Graphics2D) g;
+        GradientPaint gradient = new GradientPaint(0, 0, new Color(200, 220, 255), getWidth(), getHeight(), Color.WHITE);
+        g2d.setPaint(gradient);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+
+        // 画线
+        g2d.setColor(Color.BLACK);
+        g2d.setStroke(new BasicStroke(10));
+
+        java.util.List<Point> centers = new java.util.ArrayList<>();
+        for (Component comp : getComponents()) {
+            if (comp instanceof VueCase) {
+                int x = comp.getX() + comp.getWidth() / 2;
+                int y = comp.getY() + comp.getHeight() / 2;
+                centers.add(new Point(x, y));
+            }
+        }
+
+        for (int i = 0; i < centers.size() - 1; i++) {
+            Point p1 = centers.get(i);
+            Point p2 = centers.get(i + 1);
+            g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
+        }
+    }
 
 }
