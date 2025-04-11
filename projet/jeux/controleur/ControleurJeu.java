@@ -22,31 +22,32 @@ public class ControleurJeu {
 
         ModelePlateau modelePlateau = new ModelePlateau();
         ModeleJoueur modeleJoueur = joueurActuel;
+        ModeleParam modeleParam = new ModeleParam();
 
-        new VueJeu(modelePlateau, modeleJoueur);
+        new VueAccueil(modelePlateau, modeleJoueur,modeleParam, ensembleJoueur);
     }
 
-    public void startJeux(ModeleDe modeleDe) {
+    public void startJeux() {
         System.out.println("Initialisation du plateau terminé !");
         Scanner input = new Scanner(System.in);
         while (!fini) {
             ModelePlateau plateau = new ModelePlateau();
 
             de = ModeleDe.getValueDe();
-            System.out.println("En attendant que le joueur " + joueurActuel.getNom() + " lance les dés (Taper la touche enter pour continuer)");
+            // System.out.println("En attendant que le joueur " + joueurActuel.getNom() + " lance les dés (Taper la touche enter pour continuer)");
 
             // TODO: à modifier
-            input.nextLine();
-            System.out.println("Le joueur " + joueurActuel.getNom() + " a obtenu " + de);
+            // input.nextLine();
+            // System.out.println("Le joueur " + joueurActuel.getNom() + " a obtenu " + de);
 
-            System.out.println("Veuillez choisir un pion pour partir: ");
-            System.out.println("Numéro : Position");
-            joueurActuel.ensemblePion.forEach(x -> {
-                System.out.printf("Pion %d : %d%n", x.getChiffre(), x.getPosition());
-            });
+            // System.out.println("Veuillez choisir un pion pour partir: ");
+            // System.out.println("Numéro : Position");
+//            joueurActuel.ensemblePion.forEach(x -> {
+//                System.out.printf("Pion %d : %d%n", x.getChiffre(), x.getPosition());
+//            });
 
             // Maj(mettre à jour) la position
-            int choix = input.nextInt() - 1;
+            int choix = 1;
             joueurActuel.ensemblePion.get(choix).setPosition(de);
 
             // Vérifier si le joueur arrive à une case spéciale
