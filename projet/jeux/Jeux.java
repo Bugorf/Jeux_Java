@@ -2,7 +2,7 @@ package projet.jeux;
 
 public class Jeux {
 <<<<<<< Updated upstream
-=======
+
     public boolean fini = false;
     public ModeleJoueur joueurActuel;
     public ArrayList<ModeleJoueur> ensembleJoueur;
@@ -13,7 +13,12 @@ public class Jeux {
     public Jeux(int nbJoueur) {
         ensembleJoueur = new ArrayList<ModeleJoueur>(nbJoueur);
         for (int i = 0; i < nbJoueur; i++) {
-            System.out.println("Veuillez entrer un nom du joueur: ");
+            System.out.println("Veuillez entrer un nom du     public static void main(String[] args) {\n" + //
+                                "        vueJoueur j = new vueJoueur();\n" + //
+                                "        j.setLocation(350, 200);\n" + //
+                                "        j.setVisible(true);\n" + //
+                                "        //j.Menu();        \n" + //
+                                "    }joueur: ");
             String nom = input.nextLine();
             ensembleJoueur.add(new ModeleJoueur(nom, Color.RED));
         }
