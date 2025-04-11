@@ -24,14 +24,6 @@ public class VuePlateau extends JPanel{
             vueCase.setPreferredSize(new Dimension(80, 80));
             this.add(vueCase, gbc); // 添加到当前面板
         }
-
-        JFrame framePlateau = new JFrame("Jeu");
-        framePlateau.setLayout(new BorderLayout());
-        framePlateau.getContentPane().add(this, BorderLayout.CENTER);
-
-        framePlateau.pack();
-        framePlateau.setLocationRelativeTo(null);
-        framePlateau.setVisible(true);
     }
 
 
