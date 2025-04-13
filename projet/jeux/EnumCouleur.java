@@ -1,6 +1,6 @@
 package projet.jeux;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Random;
 public enum EnumCouleur {
     GREEN(Color.GREEN),
@@ -14,7 +14,7 @@ public enum EnumCouleur {
         color = c;
     }
 
-    // Non static ---> manipulations sur des attributs de enum
+    // Non static -> manipulations sur des attributs d'enum
     public Color getColor() {
         return color;
     }

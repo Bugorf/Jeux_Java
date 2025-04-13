@@ -1,16 +1,15 @@
 package projet.jeux.vue;
 
-
-import java.awt.*;
-import java.util.ArrayList;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import projet.jeux.modele.ModelePlateau;
+import javax.swing.*;
+import java.awt.*;
 
+/**
+ * La classe qui s'occupe de dessiner le plateau
+ */
 public class VuePlateau extends JPanel{
     public VuePlateau(ModelePlateau modelePlateau) {
-        setLayout(new GridBagLayout()); // 设置面板的布局
+        setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
         for (int i = 0; i < modelePlateau.ensembleCase.size(); i++) {
@@ -22,7 +21,7 @@ public class VuePlateau extends JPanel{
             gbc.gridy = y;
             gbc.insets = new Insets(20, 60, 20, 60);
             vueCase.setPreferredSize(new Dimension(80, 80));
-            this.add(vueCase, gbc); // 添加到当前面板
+            this.add(vueCase, gbc);
         }
     }
 
@@ -36,7 +35,6 @@ public class VuePlateau extends JPanel{
         g2d.setPaint(gradient);
         g2d.fillRect(0, 0, getWidth(), getHeight());
 
-        // 画线
         g2d.setColor(Color.BLACK);
         g2d.setStroke(new BasicStroke(10));
 

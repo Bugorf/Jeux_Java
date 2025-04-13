@@ -1,58 +1,69 @@
 package projet.jeux.modele;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class ModeleEvent {
     private String nomEvent;
+    private Supplier<String> event;
+    private final HashMap<String, Supplier<String>> eventList = new HashMap<>();
 
-    public ModeleEvent(ModeleJoueur joueur) {
-        switch (new Random().nextInt(4)) {
-            case 0:
-                nomEvent = "Prison";
-                eventPrison(joueur);
-                break;
-            case 1:
-                nomEvent = "AjoutPion";
-                eventAjoutPion();
-                break;
-            case 2:
-                nomEvent = "PertePion";
-                eventPertePion();
-                break;
-            case 3:
-                nomEvent = "Desupp";
-                eventDeSupp();
-                break;
-            case 4:
-                nomEvent = "Recul";
-                eventRecul();
-                break;
-        }
+    public ModeleEvent() {
+        eventList.put("Prison", this::eventPrison);
+        eventList.put("AjoutPion", this::eventAjoutPion);
+        eventList.put("PertePion", this::eventPertePion);
+        eventList.put("DeSupp", this::eventDeSupp);
+        eventList.put("Recul", this::eventRecul);
+
+        event = randomEvent();
     }
 
-    //TODO: A compléter
-    void eventPrison(ModeleJoueur joueur) {
-        joueur.suspendu = true;
-        System.out.println("Joueur " + joueur.getNom() + " a été suspendu");
+    private String eventPrison() {
+        return "Événement Prison";
     }
 
-    void eventAjoutPion() {
-        System.out.println("eventAjoutPion");
+    private String eventAjoutPion() {
+        return "Événement Ajout Pion";
     }
 
-    void eventPertePion() {
-        System.out.println("eventPertePion");
+    private String eventPertePion() {
+        return "Événement Perte Pion";
     }
 
-    void eventDeSupp() {
-        System.out.println("eventPertePion");
+    private String eventDeSupp() {
+        return "Événement De Suppression";
     }
 
-    void eventRecul() {
-        System.out.println("eventPertePion");
+    private String eventRecul() {
+        return "Événement Recul";
     }
 
-    String getNomEvent() {
+    public String getNomEvent() {
         return nomEvent;
+    }
+
+    public String getEventMessage() {
+        return event.get();
+    }
+
+    private Supplier<String> randomEvent() {
+        var entryList = new ArrayList<>(eventList.entrySet());
+
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(entryList.size());
+        Map.Entry<String, Supplier<String>> entry = entryList.get(randomIndex);
+
+        nomEvent = entry.getKey();
+        event = entry.getValue();
+
+        return event;
+    }
+
+    public String getMsg() {
+        randomEvent();
+        return event.get();
     }
 }

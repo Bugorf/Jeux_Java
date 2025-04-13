@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class ModelePlateau {
 
     public ArrayList<ModeleCase> ensembleCase = new ArrayList<>(36);
+    // La position de chaque case, on l'utilise pour dessiner la trajectoire des cases.
     public HashMap<Integer, int[]> posCase = new HashMap<>();
 
     public ModelePlateau() {

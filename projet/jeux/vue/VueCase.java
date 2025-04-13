@@ -1,9 +1,13 @@
 package projet.jeux.vue;
 
-import javax.swing.*;
-import java.awt.*;
 import projet.jeux.modele.ModeleCase;
 
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * La classe correspondante à la case
+ */
 public class VueCase extends JPanel {
 
     private Color innerColor = Color.YELLOW; 
@@ -38,7 +42,7 @@ public class VueCase extends JPanel {
         g2.setColor(innerColor);
         g2.fillOval(innerMargin, innerMargin, size - innerMargin * 2, size - innerMargin * 2);
 
-        // 画数字（居中）
+        // La chiffre (center)
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("SansSerif", Font.BOLD, 30));
         FontMetrics fm = g2.getFontMetrics();
@@ -53,8 +57,4 @@ public class VueCase extends JPanel {
         g2.dispose();
     }
 
-    public void arrive() {
-        innerMargin = 20;
-        this.repaint();
-    }
 }
