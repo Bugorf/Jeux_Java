@@ -8,13 +8,16 @@ import java.util.Random;
  */
 public class ModeleCase {
     private Color couleur;
-    private final int coeff;
+    private int coeff;
     private final int estCaseSpe;
     private static int nbCaseSpe = 0;
+    private int avecChiffre;
+    private int nbCaseChiffre = 0;
     private ModeleEvent caseEvent;
     public ModeleCase() {
-        coeff = new Random().nextInt(10);
         estCaseSpe = new Random().nextInt(0,2);
+        avecChiffre = new Random().nextInt(0,2);
+        coeff = avecChiffre() ? new Random().nextInt(15) : 0;
         couleur = estCaseSpe() ? Color.RED : Color.BLACK;
     }
 
@@ -24,6 +27,10 @@ public class ModeleCase {
 
     public int getCoeff() {
         return coeff;
+    }
+
+    public void setCoeff(int coeff) {
+        this.coeff = coeff;
     }
 
     public String runEvent() {
@@ -42,5 +49,18 @@ public class ModeleCase {
         }
         return false;
         
+    }
+
+    public boolean avecChiffre() {
+        // 15 cases avec chiffre maxmum
+        if (avecChiffre == 1 && nbCaseChiffre < 15) {
+            nbCaseChiffre++;
+            return true;
+        }
+        return false;
+    }
+
+    public int getNbCaseChiffre() {
+        return estCaseSpe;
     }
 }

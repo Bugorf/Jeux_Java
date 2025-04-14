@@ -10,18 +10,33 @@ import java.awt.*;
  */
 public class VueCase extends JPanel {
 
-    private Color innerColor = Color.YELLOW; 
-    private Color outerColor; 
+    private Color innerColor = Color.WHITE;
+    private Color outerColor;
     private int innerMargin;
     private int outerMargin;
-
     private String text;
 
     public VueCase(ModeleCase modeleCase) {
         this.outerColor = modeleCase.getCouleur();
-        this.text = String.valueOf(modeleCase.getCoeff());
+        if (modeleCase.getCoeff() == 0) {
+            this.text = "";
+        } else{
+            this.text = String.valueOf(modeleCase.getCoeff());
+        }
 
         setOpaque(false);
+    }
+
+    public void setPionPosition(int numPion,Color couleur) {
+        this.innerColor = couleur;
+        text = String.valueOf(numPion);
+        repaint();
+    }
+
+    public void clearPionPosition() {
+        this.innerColor = Color.YELLOW;
+        text = "";
+        repaint();
     }
 
     @Override
@@ -42,19 +57,20 @@ public class VueCase extends JPanel {
         g2.setColor(innerColor);
         g2.fillOval(innerMargin, innerMargin, size - innerMargin * 2, size - innerMargin * 2);
 
-        // La chiffre (center)
+        // Texte au centre
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("SansSerif", Font.BOLD, 30));
         FontMetrics fm = g2.getFontMetrics();
         int textWidth = fm.stringWidth(text);
         int textHeight = fm.getAscent();
-
         int x = (getWidth() - textWidth) / 2;
         int y = (getHeight() + textHeight) / 2 - 4;
-
         g2.drawString(text, x, y);
 
-        g2.dispose();
+
     }
 
+    public Color getInnerColor() {
+        return innerColor;
+    }
 }

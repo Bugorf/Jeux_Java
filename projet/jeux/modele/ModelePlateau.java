@@ -41,6 +41,10 @@ public class ModelePlateau {
             }
             frontiereGauche++;
         }
+
+        ensembleCase.get(32).setCoeff(20);
+        ensembleCase.get(33).setCoeff(25);
+        ensembleCase.get(34).setCoeff(30);
     }
 
     private void ajouterCase(int numeroCase, int x, int y) {

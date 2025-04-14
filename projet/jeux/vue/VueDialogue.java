@@ -1,13 +1,7 @@
 package projet.jeux.vue;
 
-import projet.jeux.partieThiery.ModelePion;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 public class VueDialogue extends JDialog {
     private JRadioButton[] radioButtons = new JRadioButton[6];
     private ButtonGroup buttonGroup = new ButtonGroup();
@@ -18,13 +12,14 @@ public class VueDialogue extends JDialog {
         initUI();
         pack();
         setLocationRelativeTo(parent);
+        setVisible(true);
     }
 
-    public VueDialogue(Frame parent, String title, String message) {
-        JOptionPane.showMessageDialog(parent, message, title, JOptionPane.INFORMATION_MESSAGE);
+    public VueDialogue(Frame parent, String title, String msg) {
+        JOptionPane.showMessageDialog(parent, msg, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void initUI() {
+    public void initUI() {
         setLayout(new BorderLayout(10, 10));
 
         JLabel titre = new JLabel("Choix", SwingConstants.CENTER);
@@ -50,10 +45,11 @@ public class VueDialogue extends JDialog {
         btnConfirmation.addActionListener(x -> {
             for (int i = 0; i < radioButtons.length; i++) {
                 if (radioButtons[i].isSelected()) {
-                    choix = i + 1;
+                    choix = i;
                     break;
                 }
             }
+            dispose();
         });
 
         JPanel buttonPanel = new JPanel();
