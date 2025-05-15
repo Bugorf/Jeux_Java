@@ -16,7 +16,6 @@ Le but de ce projet est de créer un jeux Numeri qui est capable de accueillir p
 - Système du compteur (ex: 30s pour chaque tour)
 - Evénements aléatoires pour certaines cases
 - Support de musique(bruitage) en plan arrière
-- Mode local et mode en ligne
 
 ## Technologies utilisées
 - Java
@@ -45,39 +44,11 @@ Pour notre projet, nous avons utilisé la structure MVC(Modèle-Vue-Controleur) 
 ## Tableau des classes utilisées
 |Nom                |Appartenance   |Description    |
 |---------------    |---------------|---------------|
-|Jeu                |Main           |L'entrée du programme|
-|                   |               ||
-|VueMenu            |Vue            ||
-|VueJoueur          |Vue            ||
-|VuePlateau         |Vue            ||
-|                   |               ||
-|JeuControleur      |Controleur     |Logique du jeu|
-|PionControleur     |Controleur     |Logique du pion|
-|MenuControleur     |Controleur     |Logique du menu|
-|                   |               ||
-|DonneeJoueur       |Modèle         ||
-|DonneePlateau      |Modèle         ||
-|Pion               |Modèle         || 
-|Case               |Modèle         ||
-|CaseSpe            |Modèle         ||
-|De                 |Modèle         ||
-|Evenement          |Modèle         ||
-|EvenementSpe       |Modèle         ||
-|Partie             |Modèle         ||
+|Jeux               |Main           |L'entrée du programme|
+|VuePlateau         |Vue            |L'interface du plateau|
+|ControleurJoueur   |Controleur     |La logique du mouvement des joueurs|
+|ModeleJoueur       |Modèle         |Les paramètres du joueur|
 
->> Fonctionnalités supplémentaires
-
-|Nom                |Appartenance   |Description    |
-|---------------    |---------------|---------------|
-|JeuLAN             |❌              |Socket|
-|Animation          |❌              ||
-|Bruitage           |❌              ||
-|MenuAccueil        |❌              ||
-|ProfilJoueur       |❌              ||
-|Historique         |❌              ||
-|ComJoueur          |❌              |La communication|
-|Prefs              |❌              |La personnalisation|
-|Timer              |❌              ||
 
 ## Le graphe du relation entre classe
 
